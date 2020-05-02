@@ -1,0 +1,33 @@
+{
+  "name": "run-perf",
+  "version": "0.0.0",
+  "description": "Build performance tests with the help of webcomponents",
+  "meta": {
+    "title": "Getting started with Atomico",
+    "description": "Blazing fast as Parceljs but for webcomponents, zero configuration"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/uppercod/run-perf.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uppercod/run-perf/issues"
+  },
+  "author": "UpperCod",
+  "license": "ISC",
+  "homepage": "https://github.com/uppercod/run-perf#readme",
+  "scripts": {
+    "start": "bundle src/**/*.{html,md} docs --watch --server --template template/theme/theme.html",
+    "build": "bundle src/**/*.{html,md} docs --minify --sizes --template template/theme/theme.html",
+    "build:npm": "bundle src/**/**/*-*.js;!src/**/**/*.{showcase,test}.js ./ --minify --external --sizes",
+    "create:component": "tfolder template/tfolder/component src/components",
+    "create:hook": "tfolder template/tfolder/hook src/hooks"
+  },
+  "dependencies": {
+    "atomico": "^0.22.1"
+  },
+  "devDependencies": {
+    "bundle-cli": "^0.24.0",
+    "tfolder-cli": "^0.1.1"
+  }
+}

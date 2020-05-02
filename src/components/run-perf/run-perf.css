@@ -1,0 +1,42 @@
+:host {
+  font-family: monospace;
+  display: block;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.iframe {
+  position: absolute;
+}
+
+.test {
+  &.-item {
+    padding-bottom: 10px;
+  }
+  &.-header {
+    display: flex;
+    padding-bottom: 10px;
+  }
+  &.-title {
+    font-weight: bold;
+  }
+  &.-time {
+    margin-left: 1rem;
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  width: 50px;
+  height: 50px;
+  background: black;
+  animation: move 1s ease alternate infinite;
+}
+@keyframes move {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(100px);
+  }
+}
