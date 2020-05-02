@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>run-perf - run-perf</title>
+    <meta name="description" content="This webcomponent measures performance by counting the number of executions a function achieves in 1 second">
+    <link href="https://fonts.googleapis.com/css?family=Sen:700|Fira+Code:500,700&amp;display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --theme-font-title: "Sen", sans-serif;
+        --theme-font: "Fira Code", monospace;
+        --theme-font-color: #404049;
+        --theme-font-color-light: #f1f1f9;
+        --theme-font-color-dark: black;
+        --theme-font-color-selection: #7afee1;
+        --theme-font-color-code: deeppink;
+        --theme-box-radius: 7px;
+        --theme-box-padding: 2rem;
+        --theme-box-border-color: rgba(0, 0, 0, 0.15);
+        --theme-primary: black;
+        --theme-second: #0033ff;
+        --theme-contrast: #f1f1f9;
+        --theme-background: white;
+        --theme-background-dark: #232329;
+      }
+    </style>
+    <link rel="stylesheet" href="theme.css">
+  </head>
+  <body>
+    <input type="checkbox" id="toggle-menu">
+    <main class="theme-layout -box">
+      <aside class="theme-layout -aside">
+        <div class="theme-layout -layer -aside-background"></div>
+        <div class="theme-layout -layer -aside-scroll">
+          <div class="theme-aside -logo">
+            <img src="https://unpkg.com/atomico@0.20.0/docs/brand/logo-black.svg" alt="Logo run-perf">
+          </div>
+          <ul class="theme-aside -list-root">
+            <li>
+              <strong class="theme-aside -list-root-title">Components</strong>
+              <ul class="theme-aside -list-child">
+                <li class="theme-aside -list-child-item --active-true">
+                  <a href="index.html">run-perf</a>
+                </li>
+                <li class="theme-aside -list-child-item --active-false">
+                  <a href="run-perf-range.html">run-perf-range</a>
+                </li>
+                <li class="theme-aside -list-child-item --active-false">
+                  <a href="run-perf-spinner.html">run-perf-spinner</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <div class="theme-layout -tags">
+            <a href="https://github.com/atomicojs/atomico" target="_blank">Github</a>
+            <a href="https://twitter.com/uppercod" target="_blank">Twitter</a>
+          </div>
+        </div>
+      </aside>
+      <section class="theme-layout -content">
+        <article>
+          <h1 id="pagetitle">run-perf</h1>
+<blockquote>
+<p>This webcomponent measures performance by counting the number of executions a function achieves in 1 second</p>
+</blockquote>
+<h2 id="instalation">Instalation</h2>
+<pre class="markdown -code-container" data-code="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token string">"run-perf/run-perf-spinner"</span></code></pre><h2 id="usage">Usage</h2>
+<p></p><div class="markdown -html-container"><run-perf src="example-test.js" autorun=""></run-perf></div><div class="markdown -html-container"></div><p></p>
+<pre class="markdown -code-container" data-code="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>run-perf</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./example-test.js<span class="token punctuation">"</span></span> <span class="token attr-name">autorun</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>run-perf</span><span class="token punctuation">&gt;</span></span></code></pre><h3 id="example-testjs">example-test.js</h3>
+<pre class="markdown -code-container" data-code="js"><code class="language-js"><span class="token function">before</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"find 100"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  data<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> x <span class="token operator">==</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"find 200"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  data<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> x <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"find 400"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  data<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> x <span class="token operator">==</span> <span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">after</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">results</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>This component also allows the import of modules for the test execution, eg:</p>
+<pre class="markdown -code-container" data-code="js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> foo <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"http://unpkg.com/foo"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> baa <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"http://unpkg.com/baa"</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"baa"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">baa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><div class="markdown -html-container"><script type="module" src="run-perf.js"></script>
+</div>  
+          <h4 style="margin-bottom: 0px;">Components</h4>
+          <div class="theme-layout -cards">
+            <a class="theme-layout -card" href="index.html">
+              <div class="theme-layout -cart-group">
+                <strong> run-perf </strong><br>
+                <span>This webcomponent measures performance by counting the number of executions a function achieves in 1 second</span>
+              </div>
+              <svg class="theme-layout -card-icon" width="16px" viewBox="0 0 492.004 492.004">
+                <path style="fill: var(--theme-second);" d="M484.14 226.886L306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"></path>
+              </svg>
+            </a>
+            <a class="theme-layout -card" href="run-perf-range.html">
+              <div class="theme-layout -cart-group">
+                <strong> run-perf-range </strong><br>
+                <span>Range ui to use within the run-perf component, exemplifies range to define percentage comparisons based on container</span>
+              </div>
+              <svg class="theme-layout -card-icon" width="16px" viewBox="0 0 492.004 492.004">
+                <path style="fill: var(--theme-second);" d="M484.14 226.886L306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"></path>
+              </svg>
+            </a>
+            <a class="theme-layout -card" href="run-perf-spinner.html">
+              <div class="theme-layout -cart-group">
+                <strong> run-perf-spinner </strong><br>
+                <span>Load spinner for component</span>
+              </div>
+              <svg class="theme-layout -card-icon" width="16px" viewBox="0 0 492.004 492.004">
+                <path style="fill: var(--theme-second);" d="M484.14 226.886L306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"></path>
+              </svg>
+            </a>
+          </div>
+           
+          <br>
+          <br>
+          <hr>
+          <footer class="theme-layout -cards">
+ 
+            <a class="theme-layout -card" href="run-perf-range.html">
+              <strong>
+                run-perf-range
+              </strong>
+              <svg class="theme-layout -card-icon" width="16px" viewBox="0 0 492.004 492.004">
+                <path style="fill: var(--theme-second);" d="M484.14 226.886L306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z"></path>
+              </svg>
+            </a>
+          </footer>
+        </article>
+      </section>
+
+      <label for="toggle-menu">
+        <div class="theme-layout -toggle-menu">
+          <div></div>
+        </div>
+      </label>
+    </main>
+  
+
+</body></html>
