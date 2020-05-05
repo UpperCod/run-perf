@@ -1,2 +1,191 @@
-import{M as e,_ as t,q as a,K as r,Z as o,R as n}from"./chunks/a1b1a69b.js";function s({percent:e,color:a}){return t("host",{shadowDom:!0},t("style",null,":host{width:100%;height:3px;position:relative;display:block}.layer{width:100%;height:100%;position:absolute;border-radius:5px}.layer.-z1{background:currentColor;opacity:.33}.dot{top:50%;right:0;position:absolute;transform:translate(50%,-50%)}"),t("div",{class:"layer -z1"}),t("div",{class:"layer -z2",style:`width:${100*e}%;background: linear-gradient(to right, ${a}50, ${a});`},t("svg",{class:"dot",height:"300%",viewBox:"0 0 100 100"},t("circle",{cx:"50",cy:"50",r:"50",fill:a}))))}function i({src:e,autorun:s}){let i=a(),[l,p]=r("state"),[c,d]=r("results");function f(){let{current:{contentDocument:t,contentWindow:a}}=i,r=e=>t=>o[e]=t,o={test:[]},n=[];if(a.before=r("before"),a.test=(e,t,a)=>n.push({name:e,test:t,before:a}),a.after=r("after"),a.ready=async()=>{d(n),p("running");let e=await(o.before&&o.before()),t=()=>new Promise(e=>a.requestIdleCallback(e));await n.reduce((a,{test:r,before:o})=>a.then(async()=>{await t();let a=o?await o():e,s=function(e,t,a){let r=performance.now(),o=0;for(;performance.now()-r<t;)o++,e(a);return o}(r,1e3,a);d(n=n.map(e=>e.test==r?{...e,operations:s}:e))}),t()),p("done"),o.after&&o.after(n)},i[e])"done"==l&&ready();else{i[e]=!0;let a=document.createElement("script");a.async=!0,a.textContent=`import("./${e}").then(ready);`,t.body.appendChild(a)}}o(()=>s&&f(),[s]),function(e,t){let{current:a}=n();a[e];a._=t,a[e]}("run",f);let u=c.map(e=>e.operations||0),m=Math.max(0,...u),h=Math.min(...u),y=m-h,b=.3*y+h,g=.6*y+h;return t("host",{shadowDom:!0},t("style",null,":host{font-family:monospace;display:block;box-sizing:border-box;position:relative}.iframe{position:absolute}.test.-header,.test.-item{padding-bottom:10px}.test.-header{display:flex}.test.-title{font-weight:700}.test.-time{margin-left:1rem;opacity:.5}.loading{width:50px;height:50px;background:#000;animation:move 1s ease infinite alternate}@keyframes move{0%{transform:translateX(0)}to{transform:translateX(100px)}}"),t("div",{class:"tests"},c.map(({name:e,operations:a=0,duration:r=0})=>t("div",{class:"test -item"},t("div",{class:"test -header"},t("div",{class:"test -title"},e),t("div",{class:"test -time"},a?a.toLocaleString("en")+" opts/s":"await...")),t("run-perf-range",{color:a>g?"#00FFD4":a>b?"#ffbe46":"#ff1a84",percent:a/m||0})))),t("iframe",{class:"iframe",ref:i,width:"0",height:"0",sandbox:"allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation",frameborder:"0"}))}s.props={percent:{type:Number,value:50,reflect:!0},color:{type:String,value:"#000000"}},e("run-perf-range",s),i.props={src:{type:String},autorun:{type:Boolean},results:{type:Array,value:()=>[]},state:{type:String,reflect:!0,value:"",event:{type:"UpdateState"}}},e("run-perf",i);
+import { x, p, P, J, O, C } from './chunks/92f252a2.js';
+
+var style = ":host {\n  font-family: monospace;\n  display: block;\n  box-sizing: border-box;\n  position: relative;\n}\n\n.iframe {\n  position: absolute;\n}\n\n.test.-item {\n    padding-bottom: 10px;\n  }\n\n.test.-header {\n    display: flex;\n    padding-bottom: 10px;\n  }\n\n.test.-title {\n    font-weight: bold;\n  }\n\n.test.-time {\n    margin-left: 1rem;\n    opacity: 0.5;\n  }\n\n.loading {\n  width: 50px;\n  height: 50px;\n  background: black;\n  animation: move 1s ease alternate infinite;\n}\n\n@keyframes move {\n  0% {\n    transform: translateX(0px);\n  }\n  100% {\n    transform: translateX(100px);\n  }\n}\n";
+
+var style$1 = ":host {\n  width: 100%;\n  height: 3px;\n  position: relative;\n  display: block;\n}\n\n.layer {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  border-radius: 5px\n}\n\n.layer.-z1 {\n    background: currentColor;\n    opacity: 0.33;\n  }\n\n.dot {\n  top: 50%;\n  right: 0px;\n  position: absolute;\n  transform: translate(50%, -50%);\n}\n";
+
+function RunPerfRange({
+  percent,
+  color
+}) {
+  return p("host", {
+    shadowDom: true
+  }, p("style", null, style$1), p("div", {
+    class: "layer -z1"
+  }), p("div", {
+    class: "layer -z2",
+    style: `width:${percent * 100}%;background: linear-gradient(to right, ${color}50, ${color});`
+  }, p("svg", {
+    class: "dot",
+    height: "300%",
+    viewBox: "0 0 100 100"
+  }, p("circle", {
+    cx: "50",
+    cy: "50",
+    r: "50",
+    fill: color
+  }))));
+}
+
+RunPerfRange.props = {
+  percent: {
+    type: Number,
+    value: 50,
+    reflect: true
+  },
+  color: {
+    type: String,
+    value: "#000000"
+  }
+};
+x("run-perf-range", RunPerfRange);
+
+function RunPerf({
+  src,
+  autorun
+}) {
+  let ref = P();
+  let [state, setState] = J("state");
+  let [results, setResults] = J("results");
+  O(() => autorun && run(), [autorun]);
+  useMethod("run", run);
+
+  function run() {
+    let {
+      current: {
+        contentDocument,
+        contentWindow
+      }
+    } = ref;
+
+    let setStep = step => fn => steps[step] = fn;
+
+    let steps = {
+      test: []
+    };
+    let states = [];
+    contentWindow.before = setStep("before");
+
+    contentWindow.test = (name, test, before) => states.push({
+      name,
+      test,
+      before
+    });
+
+    contentWindow.after = setStep("after");
+
+    contentWindow.ready = async () => {
+      setResults(states);
+      setState("running");
+      let globalScope = await (steps.before && steps.before());
+
+      let prepare = () => new Promise(resolve => contentWindow.requestIdleCallback(resolve));
+
+      await states.reduce((currentPromise, {
+        test,
+        before
+      }) => currentPromise.then(async () => {
+        await prepare();
+        let localScope = before ? await before() : globalScope;
+        let operations = loop(test, 1000, localScope);
+        setResults(states = states.map(state => state.test == test ? { ...state,
+          operations
+        } : state));
+      }), prepare());
+      setState("done");
+      steps.after && steps.after(states);
+    };
+
+    if (!ref[src]) {
+      ref[src] = true;
+      let script = document.createElement("script");
+      script.async = true;
+      script.textContent = `import("./${src}").then(ready);`;
+      contentDocument.body.appendChild(script);
+    } else {
+      state == "done" && ready();
+    }
+  }
+
+  let listOperation = results.map(result => result.operations || 0);
+  let maxOperation = Math.max(0, ...listOperation);
+  let minOperation = Math.min(...listOperation);
+  let rangeOperation = maxOperation - minOperation;
+  let rangeOperation30 = rangeOperation * 0.3 + minOperation;
+  let rangeOperation60 = rangeOperation * 0.6 + minOperation;
+  return p("host", {
+    shadowDom: true
+  }, p("style", null, style), p("div", {
+    class: "tests"
+  }, results.map(({
+    name,
+    operations = 0,
+    duration = 0
+  }) => {
+    return p("div", {
+      class: "test -item"
+    }, p("div", {
+      class: "test -header"
+    }, p("div", {
+      class: "test -title"
+    }, name), p("div", {
+      class: "test -time"
+    }, operations ? operations.toLocaleString("en") + " opts/s" : "await...")), p("run-perf-range", {
+      color: operations > rangeOperation60 ? "#00FFD4" : operations > rangeOperation30 ? "#ffbe46" : "#ff1a84",
+      percent: operations / maxOperation || 0
+    }));
+  })), p("iframe", {
+    class: "iframe",
+    ref: ref,
+    width: "0",
+    height: "0",
+    sandbox: "allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation",
+    frameborder: "0"
+  }));
+}
+
+function useMethod(name, callback) {
+  let {
+    current
+  } = C();
+
+  if (!current[name]) ;
+
+  current._ = callback;
+  return current[name];
+}
+
+function loop(callback, ms, scope) {
+  let start = performance.now();
+  let count = 0;
+
+  while (performance.now() - start < ms) {
+    count++;
+    callback(scope);
+  }
+
+  return count;
+}
+
+RunPerf.props = {
+  src: {
+    type: String
+  },
+  autorun: {
+    type: Boolean
+  },
+  results: {
+    type: Array,
+    value: () => []
+  },
+  state: {
+    type: String,
+    reflect: true,
+    value: "",
+    event: {
+      type: "UpdateState"
+    }
+  }
+};
+x("run-perf", RunPerf);
 //# sourceMappingURL=run-perf.js.map

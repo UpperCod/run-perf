@@ -24,7 +24,7 @@
     "create:hook": "tfolder template/tfolder/hook src/hooks"
   },
   "dependencies": {
-    "atomico": "^0.22.1"
+    "atomico": "^0.23.2"
   },
   "devDependencies": {
     "bundle-cli": "^0.24.0",
